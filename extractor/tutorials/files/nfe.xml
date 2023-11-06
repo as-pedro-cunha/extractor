@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:ConsultarLoteRpsResposta xsi:schemaLocation="https://iss.fortaleza.ce.gov.br/grpfor/schema/V2/tipos_v02.xsd" xmlns="http://www.ginfes.com.br/tipos_v03.xsd" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns:ns3="http://www.ginfes.com.br/servico_consultar_lote_rps_resposta_v03.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ns3:ListaNfse>
+        <ns3:CompNfse>
+            <Nfse>
+                <InfNfse>
+                    <Numero>29</Numero>
+                    <CodigoVerificacao>998711329</CodigoVerificacao>
+                    <DataEmissao>2023-10-24T11:44:51.342-03:00</DataEmissao>
+                    <IdentificacaoRps>
+                        <Numero>11</Numero>
+                        <Serie>NFSe</Serie>
+                        <Tipo>1</Tipo>
+                    </IdentificacaoRps>
+                    <DataEmissaoRps>2023-10-24-03:00</DataEmissaoRps>
+                    <NaturezaOperacao>1</NaturezaOperacao>
+                    <RegimeEspecialTributacao>6</RegimeEspecialTributacao>
+                    <OptanteSimplesNacional>1</OptanteSimplesNacional>
+                    <IncentivadorCultural>2</IncentivadorCultural>
+                    <Competencia>2023-10-01-03:00</Competencia>
+                    <Servico>
+                        <Valores>
+                            <ValorServicos>1790</ValorServicos>
+                            <IssRetido>2</IssRetido>
+                            <ValorIss>35.98</ValorIss>
+                            <ValorIssRetido>0</ValorIssRetido>
+                            <BaseCalculo>1790</BaseCalculo>
+                            <Aliquota>2.01</Aliquota>
+                            <ValorLiquidoNfse>1790</ValorLiquidoNfse>
+                        </Valores>
+                        <ItemListaServico>103</ItemListaServico>
+                        <CodigoCnae>631190099</CodigoCnae>
+                        <CodigoTributacaoMunicipio>631190099</CodigoTributacaoMunicipio>
+                        <Discriminacao>Fatura #19800
+VPS Trading BR - 8GB - 177.93.107.107 (14/10/2023 - 13/11/2023) -&gt; R$ 170.00
+VPS Trading BR - 8GB - 177.93.107.110 (14/10/2023 - 13/11/2023) -&gt; R$ 240.00
+VPS Trading BR - 8GB - 177.93.107.111 (14/10/2023 - 13/11/2023) -&gt; R$ 120.00
+VPS T</Discriminacao>
+                        <CodigoMunicipio>2304400</CodigoMunicipio>
+                    </Servico>
+                    <ValorCredito>0</ValorCredito>
+                    <PrestadorServico>
+                        <IdentificacaoPrestador>
+                            <Cnpj>12884720000146</Cnpj>
+                            <InscricaoMunicipal>723151</InscricaoMunicipal>
+                        </IdentificacaoPrestador>
+                        <RazaoSocial>MUSTHOST LTDA</RazaoSocial>
+                        <NomeFantasia>MUSTHOST</NomeFantasia>
+                        <Endereco>
+                            <Endereco>AV DES MOREIRA</Endereco>
+                            <Numero>1300</Numero>
+                            <Complemento>SALA 602_T-_NORTE</Complemento>
+                            <Bairro>ALDEOTA</Bairro>
+                            <CodigoMunicipio>2304400</CodigoMunicipio>
+                            <Uf>CE</Uf>
+                            <Cep>60170002</Cep>
+                        </Endereco>
+                        <Contato>
+                            <Telefone>(85)3095-2008</Telefone>
+                            <Email>vendas@musthost.com.br</Email>
+                        </Contato>
+                    </PrestadorServico>
+                    <TomadorServico>
+                        <IdentificacaoTomador>
+                            <CpfCnpj/>
+                        </IdentificacaoTomador>
+                        <RazaoSocial>ASQ Asset Management LTDA</RazaoSocial>
+                        <Endereco>
+                            <Endereco>Rua Harmonia,</Endereco>
+                            <Numero>999</Numero>
+                            <Complemento>N/A</Complemento>
+                            <Bairro>Centro</Bairro>
+                            <CodigoMunicipio>3550308</CodigoMunicipio>
+                            <Uf>SP</Uf>
+                            <Cep>5435001</Cep>
+                        </Endereco>
+                        <Contato>
+                            <Telefone>996170784</Telefone>
+                            <Email>pedro.cunha@asq.capital</Email>
+                        </Contato>
+                    </TomadorServico>
+                    <OrgaoGerador>
+                        <CodigoMunicipio>2304400</CodigoMunicipio>
+                        <Uf>CE</Uf>
+                    </OrgaoGerador>
+                </InfNfse>
+            </Nfse>
+        </ns3:CompNfse>
+    </ns3:ListaNfse>
+</ns3:ConsultarLoteRpsResposta>

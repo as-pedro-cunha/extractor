@@ -1,0 +1,7 @@
+[llm]
+timeout_retries = 5
+timeout_sec = 60
+
+[filepaths]
+nfe_input = ["nfe", "input"]
+nfe_output = ["nfe", "output", "nfe.csv"]

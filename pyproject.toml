@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "extractor"
+version = "0.1.0"
+description = "Package create for using LLM's for extracting information from documents in a structured way."
+authors = ["Pedro Cunha <pedro.cunha@asq.capital>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+langchain = ">=0.0.330"
+tqdm = ">=4.66.1"
+instructor = ">=0.2.9"
+toml = ">=0.10.2"
+invoke = ">=2.2.0"
+pymupdf = ">=1.23.5"
+loguru = ">=0.7.2"
+python-dotenv = ">=1.0.0"
+tiktoken = ">=0.5.1"
+pandas = "^2.1.2"
+
+[tool.poetry.dev-dependencies]
+pytest = ">=7.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = ">=23.10.1"
+ruff = ">=0.1.4"
+pylance = ">=0.8.11"
+pytest = ">=7.4.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
