@@ -1,14 +1,6 @@
 from extractor.config import openai
 from pydantic import BaseModel
-import os
-
-
-filepath = os.path.join(os.path.dirname(__file__), "files", "nfe.xml")
-
-
-def open_xml_as_txt(file_path):
-    with open(file_path, "r") as f:
-        return f.read()
+from extractor.tutorials.files import get_nf1_xml
 
 
 class NfeCampos(BaseModel):
@@ -32,7 +24,7 @@ model = openai.ChatCompletion.create(
             "content": (
                 "Você é um leitor de arquivos .xml de notas fiscais brasileiras. "
                 "Sua função é somente retornar os valores respectivos das chaves especificadas."
-                f"Segue o arquivo .xml: \n{open_xml_as_txt(filepath)}"
+                f"Segue o arquivo .xml: \n{get_nf1_xml()}"
             ),
         },
     ],
