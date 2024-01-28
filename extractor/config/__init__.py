@@ -10,6 +10,8 @@ load_dotenv()
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
 marvin.settings.openai.api_key = os.environ["OPENAI_API_KEY"]
+DROPBOX_ACCESS_TOKEN = os.environ["DROPBOX_ACCESS_TOKEN"]
+AIRTABLE_PERSONAL_ACCESS_TOKEN = os.environ["AIRTABLE_PERSONAL_ACCESS_TOKEN"]
 
 instructor.patch()
 

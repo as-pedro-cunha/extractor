@@ -8,6 +8,11 @@ import csv
 from loguru import logger as log
 from typing import Type
 
+from extractor import PATH_NFE
+
+
+DOWNLOAD_URLS = PATH_NFE / "output" / "download_urls.csv"
+
 
 def open_xml_as_txt(file_path: str) -> str:
     with open(file_path, "r") as f:
@@ -18,19 +23,39 @@ def get_path(root_path: str, list_paths: List[str]) -> str:
     return os.path.join(root_path, *list_paths)
 
 
-def get_files(root_path: str, list_paths: List[str] = None) -> List[str]:
+def get_files(root_path: str, list_paths: None | List[str] = None) -> List[str]:
     target_path = get_path(root_path, list_paths) if list_paths else root_path
     return [os.path.join(target_path, file) for file in os.listdir(target_path)]
 
 
 def dataclass_to_pandas(
-    models: List[OpenAISchema], timestamp: str, filepath: str
+    models: List[OpenAISchema], timestamp: str, filepath: str, inserted_at: pd.Timestamp
 ) -> pd.DataFrame:
     # Convert your dataclass models to a DataFrame
     incoming_df = pd.DataFrame([model.dict(by_alias=True) for model in models])
 
     # Drop columns where all elements are NA
     incoming_df = incoming_df.dropna(axis=1, how="all")
+
+    # create a column that is the current timestamp
+    incoming_df["inserted_at"] = inserted_at
+
+    # add the "download_url" from
+    download_urls = pd.read_csv(DOWNLOAD_URLS)
+    # keys: filename, download_url
+    # now use the filename to match with the "input_filepath" in the incomding_df so we can add the download_url to the dataframe
+    incoming_df["input_filename"] = incoming_df["input_filepath"].apply(
+        lambda x: x.split("/")[-1] if isinstance(x, str) else None
+    )
+    # Merge the incoming_df with download_urls on the 'input_filename' and 'filename' columns
+    incoming_df = incoming_df.merge(
+        download_urls, left_on="input_filename", right_on="filename", how="left"
+    )
+
+    # After merging, 'download_url' from download_urls will be in incoming_df
+    # You can drop the extra 'filename' column from the merge if not needed
+    incoming_df.drop("filename", axis=1, inplace=True)
+    incoming_df.drop("input_filename", axis=1, inplace=True)
 
     if os.path.exists(filepath):
         df = pd.read_csv(filepath)
@@ -104,7 +129,7 @@ def check_short_hash(filepath: str, short_hash: str) -> bool:
         return True
 
 
-def log_filepaths(filepaths_contents: List[Tuple[str, str, str]]):
+def log_filepaths(filepaths_contents: List[Tuple[str, str]]):
     log.info(f"Processing {len(filepaths_contents)} new files.")
     for filepath, _ in filepaths_contents:
         filename = os.path.basename(filepath)
@@ -113,7 +138,7 @@ def log_filepaths(filepaths_contents: List[Tuple[str, str, str]]):
 
 def load_fresh_nfes(
     input_filesdir: str, output_file: str, keep_first_page_only: bool = False
-) -> List[Tuple[str, str, str]]:
+) -> List[Tuple[str, str]]:
     from extractor import loader
 
     output_filepaths = []
@@ -137,7 +162,7 @@ def load_fresh_nfes(
     return filepaths_contents
 
 
-def get_string_from_basemodel(model: Type[BaseModel]) -> int:
+def get_string_from_basemodel(model: Type[BaseModel]) -> str:
     aliases = [
         field_info.alias
         for name, field_info in model.__fields__.items()

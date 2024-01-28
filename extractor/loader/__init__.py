@@ -112,7 +112,7 @@ def load_single_document(
     raise ValueError(f"Unsupported file extension '{ext}'")
 
 
-def run(files: List[str], keep_first_page_only: bool = False) -> List[Document]:
+def run(files: List[Document], keep_first_page_only: bool = False) -> List[Document]:
     """
     Loads all documents from the source documents directory, preserving the order of files.
     """
@@ -122,7 +122,7 @@ def run(files: List[str], keep_first_page_only: bool = False) -> List[Document]:
             load_single_document, keep_first_page_only=keep_first_page_only
         )
         with tqdm(total=len(files), desc="Loading new documents", ncols=80) as pbar:
-            for docs in pool.imap(loader_with_flag, files):
+            for docs in pool.imap(loader_with_flag, files):  # type: ignore
                 results.extend(docs)
                 pbar.update()
 
